@@ -1,12 +1,10 @@
 # droga cantidad
 1: 20
-2: 20
-3: 20
-4: 10
+2: 45
+3: 90
 
-#remedio droga cantidad
+# remedio droga cantidad
+1 1 10
 1 2 10
 2 1 10
-3 2 10
-4 2 20
-5 4 10
+2 3 10
