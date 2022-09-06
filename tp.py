@@ -1,5 +1,5 @@
 from pyscipopt import Model, quicksum
-
+import numpy as np
 model = Model("tp")
 #file = input("Ingrese el nombre del archivo y su extensión. Por ejemplo: input1.txt\n")
 file = "input1.txt"
@@ -10,6 +10,12 @@ cant_necesaria = []
 remedios = []
 r_drogas = []
 cantidades = []
+
+
+
+#def llenar_matriz(remedios, r_drogas):
+ #   matriz[0][1] = 2
+  #  return matriz
 
 try:
     with open(file, 'r') as archivo:
@@ -27,11 +33,12 @@ try:
                     split = linea.split(" ")
                     remedios.append(int(split[0]))
                     r_drogas.append(int(split[1]))
-                    cantidades.append(int(split[2])) 
-            archivo.close()   
+
+        matriz = np.zeros((max(remedios),len(r_drogas)-1)).astype(int)
+                                   
+    archivo.close()   
 except IOError:
     print ("No existe el archivo", file)
-
 
 #### VARIABLES ####
 # Drogas
@@ -59,16 +66,13 @@ for i in range(len(r_drogas)):
     rd[i] = r_drogas[i]
 
 # Cantidad de la droga en el remedio i
-x = {}
-for i in range(len(cantidades)):
-    x[i] = model.addVar(vtype='I')
-    x[i] = cantidades[i]
+# x = {}
+# for i in range(len(cantidades)):
+#     x[i] = model.addVar(vtype='I')
+#     x[i] = cantidades[i]
 
 
 #### RESTRICCIONES ####
-for i in range(len(r)):
-    model.addCons(quicksum(d[j][i]*x[j] for j in F) == z[i], name="Nutr(%s)"%i)
-    print(r[i], rd[i])
     #model.addCons(quicksum(d[j][i]*x[j] for j in F) == z[i], name="Nutr(%s)"%i)
 
 #### FUNCIÓN OBJETIVO ####
