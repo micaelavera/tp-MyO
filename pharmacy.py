@@ -8,7 +8,7 @@ cant_necesaria = []
 remedios = []
 passDrougs = False
 
-#file = input("Ingrese el nombre del archivo y su extensión. Por ejemplo: input1.txt\n")
+#file = input("Ingrese el nombre del archivo y su extensión. Por ejemplo: input1.in\n")
 file = "farma03.in"
 
 # try:
@@ -57,15 +57,20 @@ try:
                 drogas.append(split[0])
                 cant_necesaria.append(float(split[1].strip()))
             else:
-                if not '#' in line and passDrougs==True and not 'REMEDIOS' in line:
+                if not '#' in line and passDrougs == True and not 'REMEDIOS' in line:
                     linea = line.rstrip('\n')
                     split = linea.split(":")
                     remedios.append(split[0])
 			
                                 
-    archivo.close()   
 except IOError:
     print ("No existe el archivo", file)
+    import sys
+    sys.exit()
+
+finally:
+    archivo.close()   
+
 
 cantidades = np.empty((len(remedios),len(drogas)),float)
 
@@ -73,7 +78,7 @@ for j in range(len(remedios)):
    for i in range(len(drogas)): 
        cantidades[j][i]=0
 
-passDrougs=False
+passDrougs = False
 try:
     with open(file, 'r') as archivo:
         lines = archivo.readlines()
@@ -92,14 +97,14 @@ try:
                         split3 = linea3.split(" ")
                         cantidades[remedios.index(remedio)][drogas.index(split3[0])]= float(split3[1])
                         
-                    
-
     archivo.close()   
 except IOError:
     print ("No existe el archivo", file)
     import sys
     sys.exit()
 
+finally:
+    archivo.close() 
 #### VARIABLES ####
 # Remedios
 r = {}
