@@ -66,11 +66,13 @@ model.hideOutput()
 model.optimize()
 
 print("\n******************************* SOLUCIÓN *******************************")
-print("Matriz de cantidades del remedio i y droga j\n")
-print(cantidades,"\n")
+# print("Matriz de cantidades del remedio i y droga j\n")
+# print(cantidades,"\n")
 
+print("Remedios que van a ser utilizados:\n")
 print ("{:<10} {:<20}".format('Remedio','Cantidad'))
 for i in range(len(r)):
   print("{:<10} {:<20}".format(r[i].name, model.getVal(r[i])))
 
+print("\n")
 print("La cantidad de remedios distintos utilizados:", model.getObjVal())
