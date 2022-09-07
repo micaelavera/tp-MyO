@@ -66,8 +66,6 @@ model.hideOutput()
 model.optimize()
 
 print("\n******************************* SOLUCIÓN *******************************")
-# print("Matriz de cantidades del remedio i y droga j\n")
-# print(cantidades,"\n")
 
 print("Remedios que van a ser utilizados:\n")
 print ("{:<10} {:<20}".format('Remedio','Cantidad'))
