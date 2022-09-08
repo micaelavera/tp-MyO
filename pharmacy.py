@@ -7,7 +7,7 @@ file = input("Ingrese el nombre del archivo y su extensión. Por ejemplo: farma0
 drogas = []
 cant_necesaria = []
 remedios = []
-passDrougs = False
+passDrugs = False
 tupla = []
 
 try:
@@ -16,14 +16,14 @@ try:
 
             for line in lines:
                 if 'REMEDIOS' in line:
-                    passDrougs = True
-                if not '#' in line and ':' in line and passDrougs == False and not 'DROGAS' in line:
+                    passDrugs = True
+                if not '#' in line and ':' in line and passDrugs == False and not 'DROGAS' in line:
                     linea = line.rstrip('\n')
                     split = linea.split(":")
                     drogas.append(split[0])
                     cant_necesaria.append(float(split[1].strip()))
                 else:
-                     if not '#' in line and passDrougs == True and not 'REMEDIOS' in line:
+                     if not '#' in line and passDrugs == True and not 'REMEDIOS' in line:
                         linea = line.rstrip('\n')
                         split = linea.split(":")
                         remedio = split[0]
